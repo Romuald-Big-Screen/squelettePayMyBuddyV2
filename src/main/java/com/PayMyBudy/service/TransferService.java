@@ -6,6 +6,8 @@ import com.PayMyBudy.model.User;
 import com.PayMyBudy.repository.AccountRepository;
 import com.PayMyBudy.repository.UserRepository;
 import com.PayMyBudy.service.form.TransferToAccountForm;
+import org.hibernate.id.ForeignGenerator;
+import org.springframework.security.access.SecurityConfig;
 
 
 import java.security.Security;
@@ -39,6 +41,11 @@ public class TransferService {
         return account.getIban();
 
     }
-     public void transferToAccount(TransferToAccountForm)
+     public void transferToAccount(TransferToAccountForm) {
+        if (form != null) {
+            org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) SecurityConfig
+
+        }
+     }
 
 }
