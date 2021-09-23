@@ -4,8 +4,11 @@ package com.PayMyBudy.webApp.controller;
 
 import com.PayMyBudy.model.Transfer;
 import com.PayMyBudy.model.User;
+import com.PayMyBudy.service.ConnectionService;
 import com.PayMyBudy.service.TransferService;
 import com.PayMyBudy.service.UserService;
+import com.PayMyBudy.service.form.TransferToAccountForm;
+import com.PayMyBudy.service.form.TransferToBankForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +48,7 @@ public class TransferController {
         List<Transfer> transactions = transferService.findTransactions();
         model.addAttribute("connections",contacts);
         model.addAttribute("transfers", transactions);
-        return new ModelAndView("transfers","transferForm", new TransferForm());
+        return new ModelAndView("transfer","transferForm", new TransferForm());
     }
     @GetMapping("transfer-to-bank")
     public ModelAndView transferToBank(Model model) {
@@ -69,6 +72,10 @@ public class TransferController {
         return new ModelAndView("transfer-to-account", "transferToAccountForm", new TransferToAccountForm());
     }
     @PostMapping("transfer-to-account")
-    public ModelAndView transferCashToAccount(Model model, @ModelAttribute())
+    public ModelAndView transferCashToAccount(Model model, @ModelAttribute("transferToAccountForm") TransferToAccountForm form) {
+        transferService.transferToAccount(form);
+
+        return new ModelAndView("transfer-to- account", "transferToAccountForm", new TransferToAccount());
+    }
 
 }
