@@ -8,6 +8,7 @@ import com.PayMyBudy.repository.UserRepository;
 import com.PayMyBudy.service.form.TransferToAccountForm;
 import org.hibernate.id.ForeignGenerator;
 import org.springframework.security.access.SecurityConfig;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 
 import java.security.Security;
@@ -26,7 +27,7 @@ public class TransferService {
 
 
     public List<Transfer>findTransaction() {
-        org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) Security;
+        org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User connectedUser = userRepository.findUserByMail(springUser.getUsername())
                 .orElseThrow(() -> new RuntimeException("user with email not found"));
         return transferRepository.findTransferByUserId(connectedUser.getId());
@@ -34,16 +35,20 @@ public class TransferService {
     }
 
     public String findIban() {
-        org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) Security;
+        org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User connectedUser = userRepository.findUserByMail(springUser.getUsername())
                 .orElseThrow(() -> new RuntimeException("user with email not found"));
         Account account = accountRepository.findAccountByUserId(connectedUser.getId());
         return account.getIban();
 
     }
-     public void transferToAccount(TransferToAccountForm) {
+     public void transferToAccount(TransferToAccountForm form) {
         if (form != null) {
-            org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) SecurityConfig
+            org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            User connectedUser = userRepository.findUserByMail(springUser.getUsername())
+                    .orElseThrow(() -> new RuntimeException("user with email not found"));
+            accountRepository.save(connectedUser.getAccount().plus(form.getAmount()));
+        } else {
 
         }
      }

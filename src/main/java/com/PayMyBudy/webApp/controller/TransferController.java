@@ -7,6 +7,7 @@ import com.PayMyBudy.model.User;
 import com.PayMyBudy.service.ConnectionService;
 import com.PayMyBudy.service.TransferService;
 import com.PayMyBudy.service.UserService;
+import com.PayMyBudy.service.form.TransferForm;
 import com.PayMyBudy.service.form.TransferToAccountForm;
 import com.PayMyBudy.service.form.TransferToBankForm;
 import org.springframework.stereotype.Controller;

@@ -30,3 +30,33 @@
                 <div>
                   <h4 class="logo">Pay My Budy</h4>
                 </div>
+                  <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+                              <a class="me-3 py-2 text-dark text-decoration-none" href="/paymybuddy">Home</a>
+                              <a class="me-3 py-2 text-dark text-decoration-none" href="/paymybuddy/transfer">Transfer</a>
+                              <a class="me-3 py-2 text-dark text-decoration-none" href="/paymybuddy/profile">Profile</a>
+                              <a class="me-3 py-2 text-dark text-decoration-none" href="/paymybuddy/contact">Contact</a>
+                              <a class="py-2 text-dark text-decoration-none" href="/paymybuddy/logout">Log off </a>
+                  </nav>
+              </header>
+
+                          <div class="flex">
+
+                            <form:form action="connection" method="post" modelAttribute="addConnectionForm">
+
+                              <div class="form-floating">
+                                <form:input path="email" type="email" class="form-control floatingInput" />
+                                <label for="floatingInput">Email address</label>
+                              </div>
+
+                              <div>
+                                <button type="submit" class="contact-us"Add connection</button>
+                              </div>
+                              </form:form>
+
+
+            </div>
+
+           </body>
+
+
+    </html>
