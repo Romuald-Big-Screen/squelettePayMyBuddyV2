@@ -4,6 +4,7 @@ import com.PayMyBudy.model.Account;
 import com.PayMyBudy.model.Transfer;
 import com.PayMyBudy.model.User;
 import com.PayMyBudy.repository.AccountRepository;
+import com.PayMyBudy.repository.TransferRepository;
 import com.PayMyBudy.repository.UserRepository;
 import com.PayMyBudy.service.form.TransferToAccountForm;
 import org.hibernate.id.ForeignGenerator;
@@ -19,12 +20,13 @@ public class TransferService {
 
     private final UserRepository userRepository;
     private final AccountRepository accountRepository;
+    private final TransferRepository transferRepository;
 
-    public TransferService(UserRepository userRepository, AccountRepository accountRepository) {
+    public TransferService(UserRepository userRepository, AccountRepository accountRepository, TransferRepository transferRepository) {
         this.userRepository = userRepository;
         this.accountRepository = accountRepository;
+        this.transferRepository = transferRepository;
     }
-
 
     public List<Transfer>findTransaction() {
         org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -34,6 +36,16 @@ public class TransferService {
 
     }
 
+  /*  public List<Transfer>transfer() {
+        org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User connectedUser = userRepository.findUserByMail(springUser.getUsername())
+                .orElseThrow(() -> new RuntimeException("user with email not found"));
+        return transferRepository.
+
+    }
+
+
+
     public String findIban() {
         org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User connectedUser = userRepository.findUserByMail(springUser.getUsername())
@@ -42,7 +54,7 @@ public class TransferService {
         return account.getIban();
 
     }
-     public void transferToAccount(TransferToAccountForm form) {
+    public void transferToAccount(TransferToAccountForm form) {
         if (form != null) {
             org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             User connectedUser = userRepository.findUserByMail(springUser.getUsername())
@@ -51,6 +63,6 @@ public class TransferService {
         } else {
 
         }
-     }
+     }*/
 
 }

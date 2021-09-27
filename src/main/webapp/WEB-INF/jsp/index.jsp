@@ -21,7 +21,7 @@
       </head>
 
       <body>
-coucou
+<a href="/paymybuddy/add-connection">add-connection</a>
       </body>
 
 
