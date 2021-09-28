@@ -19,12 +19,10 @@ import java.util.List;
 public class TransferService {
 
     private final UserRepository userRepository;
-    private final AccountRepository accountRepository;
     private final TransferRepository transferRepository;
 
-    public TransferService(UserRepository userRepository, AccountRepository accountRepository, TransferRepository transferRepository) {
+    public TransferService(UserRepository userRepository, TransferRepository transferRepository) {
         this.userRepository = userRepository;
-        this.accountRepository = accountRepository;
         this.transferRepository = transferRepository;
     }
 

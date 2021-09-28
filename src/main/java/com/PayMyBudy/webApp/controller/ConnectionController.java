@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping("connection")
+@RequestMapping("add-connection")
 public class ConnectionController {
     private final ConnectionService connectionService;
 
