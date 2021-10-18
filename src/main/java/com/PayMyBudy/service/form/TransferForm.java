@@ -4,4 +4,6 @@ import lombok.Data;
 
 @Data
 public class TransferForm {
+    private String amount;
+    private String connection;
 }

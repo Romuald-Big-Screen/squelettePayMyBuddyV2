@@ -20,13 +20,15 @@ public class TransferService {
 
     private final UserRepository userRepository;
     private final TransferRepository transferRepository;
+    private  final AccountRepository accountRepository;
 
-    public TransferService(UserRepository userRepository, TransferRepository transferRepository) {
+    public TransferService(UserRepository userRepository, TransferRepository transferRepository, AccountRepository accountRepository) {
         this.userRepository = userRepository;
         this.transferRepository = transferRepository;
+        this.accountRepository = accountRepository;
     }
 
-    public List<Transfer>findTransaction() {
+    public List<Transfer>findTransactions() {
         org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User connectedUser = userRepository.findUserByMail(springUser.getUsername())
                 .orElseThrow(() -> new RuntimeException("user with email not found"));
@@ -34,7 +36,7 @@ public class TransferService {
 
     }
 
-  /*  public List<Transfer>transfer() {
+    public List<Transfer>transfer() {
         org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User connectedUser = userRepository.findUserByMail(springUser.getUsername())
                 .orElseThrow(() -> new RuntimeException("user with email not found"));

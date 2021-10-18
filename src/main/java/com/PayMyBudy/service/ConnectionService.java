@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.security.Security;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service("ConnectionService")
 public class ConnectionService {
@@ -41,5 +42,11 @@ public class ConnectionService {
         connection.setUser2(user);
         connectionRepository.save(connection);
 
+    }
+    public List <String> findConnectionsEmail(){
+        org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User connectedUser = userRepository.findUserByMail(springUser.getUsername())
+                .orElseThrow(() -> new RuntimeException("user with email not found"));
+return connectionRepository.findConnectionsByUser1Email(connectedUser.getEmail()).stream().map(Connection::getUser2).map(User::getEmail).collect(Collectors.toList());
     }
 }

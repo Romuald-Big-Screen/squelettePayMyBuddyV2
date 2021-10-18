@@ -8,5 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AccountRepository extends CrudRepository<Account, Long> {
-
+@Query("SELECT a FROM Account a WHERE a.id= :id")
+    Account findAccountByUserId(Integer id );
 }
