@@ -44,7 +44,7 @@
           </header>
           <div class="box">
 
-            <div class="selected"><a href="connection"><button class="btn btn-lg btn-primary btn-block">add a connection</button></a></div>
+            <div class="selected"><a href="add-connection"><button class="btn btn-lg btn-primary btn-block">add a connection</button></a></div>
 
           </div>
 

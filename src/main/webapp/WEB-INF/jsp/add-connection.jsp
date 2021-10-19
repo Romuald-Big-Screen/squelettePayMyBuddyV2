@@ -49,7 +49,7 @@
               </div>
 
               <div>
-                <button type="submit" class="contact-us">Add connection</button>
+                <form:button type="submit" class="contact-us">Add connection</form:button>
               </div>
             </form:form>
 

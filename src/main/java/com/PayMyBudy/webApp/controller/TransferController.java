@@ -76,7 +76,7 @@ public class TransferController {
     public ModelAndView transferCashToAccount(Model model, @ModelAttribute("transferToAccountForm") TransferToAccountForm form) {
         transferService.transferToAccount(form);
 
-        return new ModelAndView("transfer-to- account", "transferToAccountForm", new TransferToAccount());
+        return new ModelAndView("transfer-to- account", "transferToAccountForm", new TransferToAccountForm());
     }
 
-}*/
+}

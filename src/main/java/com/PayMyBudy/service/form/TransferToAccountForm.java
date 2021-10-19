@@ -5,4 +5,5 @@ import lombok.Data;
 @Data
 public class TransferToAccountForm {
     private String email;
+    private Double amount;
 }

@@ -4,6 +4,7 @@ import com.PayMyBudy.model.Account;
 import com.PayMyBudy.model.User;
 import com.PayMyBudy.repository.AccountRepository;
 import com.PayMyBudy.repository.UserRepository;
+import com.PayMyBudy.service.form.AddConnectionForm;
 import com.PayMyBudy.service.form.AddIbanForm;
 import com.PayMyBudy.service.form.RegistrationForm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,12 @@ public class UserService {
     }
 
     public void addIban(final AddIbanForm form) {
+        org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User connectedUser = userRepository.findUserByMail(springUser.getUsername())
+                .orElseThrow(() -> new RuntimeException("user with email not found"));
+    }
+
+    public void addConnection(final AddConnectionForm form) {
         org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User connectedUser = userRepository.findUserByMail(springUser.getUsername())
                 .orElseThrow(() -> new RuntimeException("user with email not found"));
