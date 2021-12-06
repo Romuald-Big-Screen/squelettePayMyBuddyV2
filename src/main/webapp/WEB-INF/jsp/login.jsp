@@ -17,9 +17,12 @@
     <body class="text-center" cz-shortcut-listen="true">
       <div class="container">
 
+      <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/coinPriceBlock.js"></script>
+      <div id="coinmarketcap-widget-coin-price-block" coins="1,1027,1839,5426,2010,6636,4172,74,5805" currency="EUR" theme="light" transparent="false" show-symbol-logo="true"></div>
+
         <form class="form-signin" method="post" action="login" name = "f">
 
-                  <h4 class="logo">Pay My Budy</h4>
+                  <h4 class="logo">Crypto Trading</h4>
                   </br>
                   <h2 class="form-signin-heading">Please sign in</h2>
                   </br>
@@ -43,7 +46,7 @@
                   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                   </br>
 
-                  <a class="py-2 text-dark text-decoration-none" href="/paymybuddy/register">New Member ?</a>
+                  <a class="py-2 text-dark text-decoration-none" href="/paymybuddy/register">Register </a>
                 </form>
       </div>
     </body>
